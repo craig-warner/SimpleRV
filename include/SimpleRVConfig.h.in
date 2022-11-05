@@ -1,0 +1,13 @@
+OUTPUT_ARCH( "riscv" )
+ENTRY(_start)
+
+SECTIONS
+{
+  . = 0x00000200;
+  .text.init : { *(.text.init) }
+  .text ALIGN(0x00200) : { *(.text) }
+  .data ALIGN(0x10000) : { *(.data) }
+  .data ALIGN(0x10000) : { *(.rodata) }
+  .bss : { *(.bss) }
+  _end = .;
+}
